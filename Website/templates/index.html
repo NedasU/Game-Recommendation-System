@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Steam Game Recommendations</title>
+  <link rel="stylesheet" type="text/css" href="../static/styles.css">
+  <script>
+    // JavaScript function to show "Generating Recommendations" message and hide existing recommendations and no recommendations message
+    function showGeneratingMessage() {
+      document.getElementById("generatingMessage").style.display = "block";
+      document.getElementById("noRecommendationsMessage").style.display = "none";
+    }
+  </script>
+</head>
+<body>
+  <div class="header-border">
+    <div class="header-container">
+      <h1>Game Recommendations</h1>
+      <h3>Don't Know What Games To Play? Enter Your Steam ID Below</h3>
+    </div>
+  </div>
+  <div class="form-container">
+    <h3 style="color:white;">To Generate Personalised Recommendations, Ensure That Your Steam Account is Not Private </h3>
+    <h3 style="color:white;">Step 1: Enter Your Public Steam ID</h3>
+    <h3 style="color:white;">Step 2: Select A Model To Use For Generating Recommendations</h3>
+    <h3 style="color:white;">Step 3: Click The "Get Recommendations" Button And Wait</h3>
+    <br>
+    <form action="/" method="post" onsubmit="showGeneratingMessage();">
+      <!-- Radio buttons for model selection -->
+      <label for="steamIdInput" style="color: white; font-size: 20px">Enter Steam ID:</label>
+      <input type="text" id="steamIdInput" name="steamId" placeholder="Enter Your Steam ID" required>
+      <div class="model-selection">
+        <label for="model2"><input type="radio" id="model2" name="selectedModel" value="SVD" required> SVD</label>
+        <label for="model3"><input type="radio" id="model3" name="selectedModel" value="CBF" required> CBF</label>
+        <label for="model4"><input type="radio" id="model4" name="selectedModel" value="Hybrid" required> Hybrid</label>
+      </div>
+      <button type="submit" class="submit-btn" method="POST">Get Recommendations</button>
+    </form>
+  </div>
+
+  <!-- "Generating Recommendations" message -->
+  <div id="generatingMessage" style="display: none; text-align: center; margin-top: 20px; color: white;">
+    <h3 style="color: white;">Generating Recommendations...</h3>
+    <br>
+    <br>
+  </div>
+
+  <!-- Display recommendations -->
+  {% if recommendations and request_method == 'POST' %}
+  <div id="recommendationsContainer">
+    <h2 style="color: white;">Recommendations for User: {{ steam_id }}</h2>
+    {% for game in recommendations %}
+    <div class="recommendation-card">
+        <a href="https://store.steampowered.com/app/{{ game.id }}/">
+          <img src="{{ game.image_url }}" alt="{{ game.name }}">
+        </a>
+      <div class="card-details">
+        <p>{{ game.name }}</p>
+        <div class="confidence-box" style="background-color: {% if game.confidence > 70 %}green{% elif game.confidence > 50 %}orange{% else %}red{% endif %};">
+          <p>Confidence Score: {{ game.confidence }}%</p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+    <br>
+    <br>
+    <h3 style="color: white">Did Not Find Anything? Explore Some Popular Games Below</h3>
+  </div>
+  {% elif request_method == 'POST' %}
+  <div id="noRecommendationsMessage" style="text-align: center; margin-top: 20px; color:white;">
+    <h4 style="color: white;">No recommendations available. Please ensure that the correct Steam ID is used or that the Account is not private!</h4>
+    <h3 style="color: white;">Maybe Explore the Popular Games Below?</h3>
+  </div>
+  {% endif %}
+
+  <!-- Popular games section wrapper -->
+  <div id="popularGamesSection" class="popular-games-wrapper">
+    <!-- Popular games section -->
+    <div class="popular-games" style="display: {{ popular_games_display }};">
+      <h2 class="popular-games-header"> Explore Some Popular Games In The Last 2 Weeks</h2>
+      <div class="popular-games-container">
+        {% for game in popular_games %}
+          <div class="popular-game-card">
+            <a href="https://store.steampowered.com/app/{{ game.id }}/">
+              <img src="{{ game.image_url }}" alt="{{ game.name }}">
+            </a>
+            <p>{{ game.name }}</p>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</body>
+</html>

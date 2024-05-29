@@ -1,0 +1,153 @@
+/* styles.css */
+
+body {
+  background-color: #1B2838;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.header-container {
+  text-align: center;
+  background-color: #171a21; /* Change background color to white */
+  padding: 20px;
+}
+
+.header-container h1, .header-container h3 {
+  margin: 10px 0;
+  color: white;
+}
+
+.form-container {
+  text-align: center;
+  padding: 20px;
+  margin-top: 20px; /* Add margin to separate header and form */
+}
+
+.form-container label, .form-container input, .form-container button {
+  margin: 10px auto;
+  display: block;
+}
+
+.form-container input {
+  width: 300px;
+  padding: 10px;
+}
+
+.model-selection {
+  display: flex;
+  justify-content: center; /* Center the radio buttons horizontally */
+  align-items: center; /* Center the radio buttons vertically */
+  margin-top: 10px;
+  width: 300px; /* Match the width of the text input */
+  margin: 0 auto; /* Center the container */
+}
+
+.model-selection input[type="radio"] {
+  -webkit-appearance: none; /* Disable default appearance */
+  -moz-appearance: none;
+  appearance: none;
+  width: 20px; /* Set a fixed width for all radio buttons */
+  height: 20px; /* Set a fixed height for all radio buttons */
+  border-radius: 50%; /* Make the radio buttons circular */
+  border: 2px solid white; /* Add border for better visibility */
+  outline: none; /* Remove outline on focus */
+  margin-right: 5px; /* Adjust margin between radio buttons */
+  cursor: pointer; /* Change cursor to pointer on hover */
+  background-color: white; /* Set default background color */
+}
+
+.model-selection input[type="radio"]:checked {
+  background-color: #171a21; /* Change background color when checked */
+  border: 2px solid white; /* Ensure border remains visible */
+}
+
+.model-selection label {
+  color: white;
+}
+
+.model-selection button {
+  width: 100px; /* Adjust button width */
+  margin: 5px; /* Add margin to buttons */
+  padding: 10px; /* Add padding to buttons */
+  background-color: white; /* Button background color */
+  color: white; /* Button text color */
+  border: none; /* Remove button border */
+  cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+#recommendationsContainer {
+  text-align: center;
+  padding: 20px;
+}
+
+.recommendation-card {
+  width: 600px; /* Adjust the width as needed */
+  height: auto; /* Let the height adjust based on content */
+  margin: 20px auto; /* Center the cards horizontally and adjust the margin for spacing between cards */
+  background-color: #ffffff; /* Background color for the cards */
+  border-radius: 10px; /* Add rounded corners to the cards */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow effect */
+}
+
+.recommendation-card img {
+  width: 100%; /* Make the image fill the entire width of the card */
+  height: auto; /* Let the height adjust based on the image aspect ratio */
+  border-top-left-radius: 10px; /* Rounded corners for the top-left of the image */
+  border-bottom-left-radius: 10px; /* Rounded corners for the bottom-left of the image */
+}
+
+.card-details {
+  padding: 10px; /* Add padding to the details section */
+}
+
+.card-details p {
+  margin: 0; /* Remove default margin for paragraphs */
+  font-size: 16px; /* Adjust font size for the game name */
+}
+
+.popular-games-wrapper {
+  border: 2px solid #ccc; /* Border style */
+  padding: 20px; /* Padding around the popular games section */
+  margin: 20px auto; /* Centering the container */
+  max-width: 1200px; /* Maximum width of the container */
+}
+
+.popular-games-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.popular-game-card {
+  width: calc(33.33% - 20px); /* Three games in each row */
+  margin-bottom: 20px;
+  color: white
+}
+
+.popular-game-card img {
+  max-width: 100%;
+  height: auto;
+}
+
+.popular-games-header {
+  color: white; /* Set header color to white */
+  text-align: center; /* Center the header */
+  margin-top: 0; /* Remove default margin */
+}
+
+.submit-btn {
+  color: black;
+  background-color: white;
+  border: 2px solid black;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.submit-btn:hover {
+  color: white;
+  background-color: #171a21;
+  border-color: white;
+}

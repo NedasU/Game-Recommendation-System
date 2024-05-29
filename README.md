@@ -28,6 +28,7 @@ dom games and instead, relevant games are recommended to the user. In recent
  “interactive recommender”– came out in 2020– which uses machine learning
  model that is trained using user playtime history, and their older RS which uses
  game tags in order to recommend similar items.
+ 
  Recommendation Systems designs can often be classified into two traditional
  categories: Collaborative Filtering (CF); and Content-Based Filtering (CBF).
  CF makes recommendations based on any users with similar tastes to the ac
@@ -43,7 +44,6 @@ ten have more personalised recommendations but often have high computational
  reason, playtime is used as an indicator of enjoyment for a user. Although this
  is relatively accurate, it can lead to many outliers as not all games have the
  same playtime requirements for game completion. For example, MMORPG’s
- 9
 (Massive multiplayer online role-playing game) can allow users to “AFK” (away
  from keyboard) in which the user is not required to be playing the game. When
  compared to an action game– such as Counter Strike– the game punishes
